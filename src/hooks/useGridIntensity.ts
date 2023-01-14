@@ -56,22 +56,20 @@ export default function useGridIntensity() {
 
         setGridGeneration(generationResponse.data[0].value);
 
-        setGridIntensity(GridIntensity.LOW);
+        const delta =
+          generationResponse.data[0].value - loadResponse.data[0].value;
 
-        // const delta =
-        //   generationResponse.data[0].value - loadResponse.data[0].value;
+        if (delta < -200) {
+          setGridIntensity(GridIntensity.HIGH);
+        }
 
-        // if (delta < -200) {
-        //   setGridIntensity(GridIntensity.HIGH);
-        // }
+        if (delta < 0 && delta > -200) {
+          setGridIntensity(GridIntensity.MEDIUM);
+        }
 
-        // if (delta < 0 && delta > -200) {
-        //   setGridIntensity(GridIntensity.MEDIUM);
-        // }
-
-        // if (delta > 0) {
-        //   setGridIntensity(GridIntensity.LOW);
-        // }
+        if (delta > 0) {
+          setGridIntensity(GridIntensity.LOW);
+        }
       } catch (err) {
         setError(err as AxiosError);
       } finally {
