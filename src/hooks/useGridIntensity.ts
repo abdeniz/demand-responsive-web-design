@@ -56,7 +56,7 @@ export default function useGridIntensity() {
 
         setGridGeneration(generationResponse.data[0].value);
 
-        setGridIntensity(GridIntensity.MEDIUM);
+        setGridIntensity(GridIntensity.LOW);
 
         // const delta =
         //   generationResponse.data[0].value - loadResponse.data[0].value;
