@@ -1,9 +1,12 @@
-import useGridIntensity from "../hooks/useGridIntensity";
+import { useContext } from "react";
+import { GridIntensityContext } from "../App";
 import { GridIntensity as GridIntensityEnum } from "../enums";
 
 const GridIntensity = () => {
-  const { gridIntensity, gridLoad, gridGeneration, error, isLoading } =
-    useGridIntensity();
+  const { gridIntensity, gridLoad, gridGeneration, isLoading } =
+    useContext(GridIntensityContext);
+
+  if (isLoading) return <h2>Loading grid data...</h2>;
 
   return (
     <div className="grid-intensity-wrapper">

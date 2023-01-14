@@ -6,10 +6,7 @@ export type Article = {
   author: string;
   authorJobTitle: string;
   authorImgUrl: string;
-  originalImgUrl: string;
-  compressedImgUrl: string;
-  imageDescription: string;
-  gradient: GradientColors;
+  articleImage: ArticleImage;
   isMain?: boolean;
 };
 
@@ -17,4 +14,11 @@ export type GradientColors = {
   color1: string;
   color2: string;
   color3: string;
+};
+
+export type ArticleImage = {
+  originalImgUrl: string;
+  compressedImgUrl: string;
+  imageDescription: string;
+  gradient: GradientColors;
 };

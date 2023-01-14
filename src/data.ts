@@ -10,10 +10,12 @@ export const articles: Article[] = [
     author: "Deniz Abdurrahmani",
     authorJobTitle: "Software Developer",
     authorImgUrl: "https://i.imgur.com/4q6qVOq.png",
-    originalImgUrl: "https://i.imgur.com/zsPoApL.png",
-    compressedImgUrl: "https://i.imgur.com/35M5YPN.png",
-    imageDescription: "A beautiful field surrounded with wind turbines",
-    gradient: { color1: "#0D3F56", color2: "#FFB561", color3: "#F0CDC7" },
+    articleImage: {
+      originalImgUrl: "https://i.imgur.com/zsPoApL.png",
+      compressedImgUrl: "https://i.imgur.com/35M5YPN.png",
+      imageDescription: "A beautiful field surrounded with wind turbines",
+      gradient: { color1: "#0D3F56", color2: "#FFB561", color3: "#F0CDC7" },
+    },
     isMain: true,
   },
   {
@@ -26,11 +28,12 @@ export const articles: Article[] = [
     author: "Deniz Abdurrahmani",
     authorJobTitle: "Software Developer",
     authorImgUrl: "https://i.imgur.com/4q6qVOq.png",
-    originalImgUrl: "https://i.imgur.com/ihgRtaf.png",
-    compressedImgUrl: "https://i.imgur.com/kOshpEX.png",
-    imageDescription:
-      "Children using tablets while sitting on a classroom floor",
-    gradient: { color1: "#0F466C", color2: "#756EA0", color3: "#B99D86" },
+    articleImage: {
+      originalImgUrl: "https://i.imgur.com/wy1KgCN.png",
+      compressedImgUrl: "https://i.imgur.com/UFjWSh2.png",
+      imageDescription: "Focused people sitting in a seminar room",
+      gradient: { color1: "#656A60", color2: "#A7B6BA", color3: "#292F31" },
+    },
   },
   {
     title:
@@ -42,9 +45,11 @@ export const articles: Article[] = [
     author: "Deniz Abdurrahmani",
     authorJobTitle: "Software Developer",
     authorImgUrl: "https://i.imgur.com/4q6qVOq.png",
-    originalImgUrl: "https://i.imgur.com/yTBbgEg.png",
-    compressedImgUrl: "https://i.imgur.com/GJXQePB.png",
-    imageDescription: "AI generated futuristic architecture",
-    gradient: { color1: "#DCE0D6", color2: "#9DAA81", color3: "#13232A" },
+    articleImage: {
+      originalImgUrl: "https://i.imgur.com/yTBbgEg.png",
+      compressedImgUrl: "https://i.imgur.com/GJXQePB.png",
+      imageDescription: "AI generated futuristic architecture",
+      gradient: { color1: "#DCE0D6", color2: "#9DAA81", color3: "#13232A" },
+    },
   },
 ];

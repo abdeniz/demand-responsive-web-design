@@ -1,50 +1,30 @@
+import { createContext } from "react";
 import Article from "./components/Article";
 import Layout from "./components/Layout";
 import { articles } from "./data";
+import { GridIntensity } from "./enums";
+import useGridIntensity from "./hooks/useGridIntensity";
+
+export const GridIntensityContext = createContext({
+  gridIntensity: GridIntensity.HIGH,
+  gridGeneration: 0,
+  gridLoad: 0,
+  isLoading: true,
+});
 
 function App() {
   return (
-    <div className="App">
-      <Layout>
-        <main>
-          {articles.map(
-            (
-              {
-                title,
-                excerpt,
-                category,
-                date,
-                author,
-                authorJobTitle,
-                authorImgUrl,
-                originalImgUrl,
-                compressedImgUrl,
-                imageDescription,
-                gradient,
-                isMain,
-              },
-              index
-            ) => (
-              <Article
-                title={title}
-                excerpt={excerpt}
-                category={category}
-                date={date}
-                author={author}
-                authorJobTitle={authorJobTitle}
-                authorImgUrl={authorImgUrl}
-                originalImgUrl={originalImgUrl}
-                compressedImgUrl={compressedImgUrl}
-                imageDescription={imageDescription}
-                gradient={gradient}
-                isMain={isMain}
-                key={title}
-              />
-            )
-          )}
-        </main>
-      </Layout>
-    </div>
+    <GridIntensityContext.Provider value={{ ...useGridIntensity() }}>
+      <div className="App">
+        <Layout>
+          <main>
+            {articles.map((article) => (
+              <Article {...article} key={article.title} />
+            ))}
+          </main>
+        </Layout>
+      </div>
+    </GridIntensityContext.Provider>
   );
 }
 

@@ -1,5 +1,6 @@
+import { useContext } from "react";
+import { GridIntensityContext } from "../App";
 import { GridIntensity } from "../enums";
-import useGridIntensity from "../hooks/useGridIntensity";
 import { Article as Props } from "../types";
 import Author from "./Author";
 import Gradient from "./Gradient";
@@ -12,25 +13,17 @@ const Article = ({
   authorImgUrl,
   category,
   date,
-  originalImgUrl,
-  compressedImgUrl,
-  imageDescription,
-  gradient,
+  articleImage,
   isMain,
 }: Props) => {
-  const { gridIntensity, gridLoad, gridGeneration, error, isLoading } =
-    useGridIntensity();
+  const { gridIntensity, isLoading } = useContext(GridIntensityContext);
+  const { originalImgUrl, compressedImgUrl, imageDescription, gradient } =
+    articleImage;
 
   return (
     <article>
       {isLoading || gridIntensity === GridIntensity.HIGH ? (
-        <Gradient
-          color1={gradient.color1}
-          color2={gradient.color2}
-          color3={gradient.color3}
-        >
-          {imageDescription}
-        </Gradient>
+        <Gradient {...gradient}>{imageDescription}</Gradient>
       ) : (
         <img
           className="article-img"
