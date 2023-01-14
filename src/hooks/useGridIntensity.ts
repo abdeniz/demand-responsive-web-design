@@ -28,6 +28,7 @@ export default function useGridIntensity() {
     (async function () {
       try {
         setIsLoading(true);
+
         const loadResponse = await axios.get<GridValue[]>(gridLoadUrl, {
           params: {
             start_time: format(startTime, "yyyy-MM-dd'T'HH:mm:ss'Z'"),
@@ -37,6 +38,8 @@ export default function useGridIntensity() {
             "x-api-key": import.meta.env.REACT_APP_API_KEY,
           },
         });
+
+        setGridLoad(loadResponse.data[0].value);
 
         const generationResponse = await axios.get<GridValue[]>(
           gridGenerationUrl,
@@ -51,23 +54,24 @@ export default function useGridIntensity() {
           }
         );
 
-        setGridLoad(loadResponse.data[0].value);
         setGridGeneration(generationResponse.data[0].value);
 
-        const delta =
-          generationResponse.data[0].value - loadResponse.data[0].value;
+        setGridIntensity(GridIntensity.MEDIUM);
 
-        if (delta < -200) {
-          setGridIntensity(GridIntensity.HIGH);
-        }
+        // const delta =
+        //   generationResponse.data[0].value - loadResponse.data[0].value;
 
-        if (delta < 0 && delta > -200) {
-          setGridIntensity(GridIntensity.MEDIUM);
-        }
+        // if (delta < -200) {
+        //   setGridIntensity(GridIntensity.HIGH);
+        // }
 
-        if (delta > 0) {
-          setGridIntensity(GridIntensity.LOW);
-        }
+        // if (delta < 0 && delta > -200) {
+        //   setGridIntensity(GridIntensity.MEDIUM);
+        // }
+
+        // if (delta > 0) {
+        //   setGridIntensity(GridIntensity.LOW);
+        // }
       } catch (err) {
         setError(err as AxiosError);
       } finally {
